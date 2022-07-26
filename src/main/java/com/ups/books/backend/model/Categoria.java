@@ -5,6 +5,7 @@
 package com.ups.books.backend.model;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,11 +30,12 @@ public class Categoria implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
-	}
+	}        
 	public void setId(Long id) {
 		this.id = id;
 	}
 	
+        @Column(nullable = false)
 	public String getNombre() {
 		return nombre;
 	}

@@ -5,14 +5,13 @@
 package com.ups.books.backend.controller.response;
 
 import com.ups.books.backend.model.Categoria;
+import java.util.ArrayList;
 
 /**
  *
  * @author UPS
  */
 public class CategoriaResponse extends ResponseRest<Categoria>{
-    
-    
-    
-    
+
+
 }

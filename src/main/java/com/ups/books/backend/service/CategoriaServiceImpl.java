@@ -5,6 +5,7 @@
 package com.ups.books.backend.service;
 
 import com.ups.books.backend.controller.response.CategoriaResponse;
+import com.ups.books.backend.controller.response.InfoRest;
 import com.ups.books.backend.model.Categoria;
 import com.ups.books.backend.model.repository.CategoriaRepository;
 import java.util.ArrayList;
@@ -26,9 +27,11 @@ public class CategoriaServiceImpl implements CategoriaService{
     @Override
     @Transactional(readOnly = true)
     public CategoriaResponse consultar() {
-        var categoriaResponse= new CategoriaResponse();
+        var categoriaResponse= new CategoriaResponse();        
         var data = (List<Categoria>) this.categoriaRepository.findAll();
+        var infoList = new ArrayList<InfoRest>();
         categoriaResponse.setData(data);
+        categoriaResponse.setInfoList(infoList);
         return categoriaResponse;
     }
 
@@ -36,8 +39,10 @@ public class CategoriaServiceImpl implements CategoriaService{
     public CategoriaResponse crear(Categoria categoria) {
         var categoriaResponse= new CategoriaResponse(); 
         var data = new ArrayList<Categoria>();
+        var infoList = new ArrayList<InfoRest>();
         data.add(this.categoriaRepository.save(categoria));
         categoriaResponse.setData(data);
+        categoriaResponse.setInfoList(infoList);
         return categoriaResponse;
     }
     

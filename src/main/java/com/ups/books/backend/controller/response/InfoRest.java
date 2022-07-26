@@ -8,12 +8,18 @@ package com.ups.books.backend.controller.response;
  *
  * @author UPS
  */
-public class ErrorRest {
+public class InfoRest {
 
     private int codigo;
     private String mensaje;
-    private String campo;
+    private int tipoInfo;
 
+    public InfoRest(int codigo, String mensaje, int tipoInfo) {
+        this.codigo = codigo;
+        this.mensaje = mensaje;
+        this.tipoInfo = tipoInfo;
+    }
+    
     public int getCodigo() {
         return codigo;
     }
@@ -30,12 +36,16 @@ public class ErrorRest {
         this.mensaje = mensaje;
     }
 
-    public String getCampo() {
-        return campo;
+    public int getTipoInfo() {
+        return tipoInfo;
     }
 
-    public void setCampo(String campo) {
-        this.campo = campo;
+    public void setTipoInfo(int tipoInfo) {
+        this.tipoInfo = tipoInfo;
     }
+
+    
+   
+  
 
 }
