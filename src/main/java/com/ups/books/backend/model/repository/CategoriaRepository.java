@@ -5,12 +5,12 @@
 package com.ups.books.backend.model.repository;
 
 import com.ups.books.backend.model.Categoria;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author UPS
  */
-public interface CategoriaRepository extends CrudRepository<Categoria, Long>{
+public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
     
 }

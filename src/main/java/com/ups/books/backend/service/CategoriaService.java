@@ -14,7 +14,11 @@ import com.ups.books.backend.model.Categoria;
 public interface CategoriaService {
     
     public CategoriaResponse consultar();
+    public CategoriaResponse buscarPorId(Long id);
     public CategoriaResponse crear(Categoria categoria);
+    public CategoriaResponse modificar(Categoria categoria, Long id);
+    public CategoriaResponse eliminar(Long id);
+    
     
     
 }

@@ -45,5 +45,54 @@ public class CategoriaServiceImpl implements CategoriaService{
         categoriaResponse.setInfoList(infoList);
         return categoriaResponse;
     }
+
+    @Override
+    public CategoriaResponse buscarPorId(Long id) {
+        var categoriaResponse= new CategoriaResponse();        
+        var data = new ArrayList<Categoria>();
+        var infoList = new ArrayList<InfoRest>();
+        var categoriaBuscada = this.categoriaRepository.findById(id);
+        if(categoriaBuscada.isPresent()){
+            data.add(categoriaBuscada.get());
+        }else{
+            infoList.add(new InfoRest(1,"Categoria no encontrada",1));
+        }
+        categoriaResponse.setData(data);
+        categoriaResponse.setInfoList(infoList);
+        return categoriaResponse;
+    }
+
+    @Override
+    public CategoriaResponse modificar(Categoria categoria, Long id) {
+        var categoriaResponse= new CategoriaResponse();        
+        var data = new ArrayList<Categoria>();
+        var infoList = new ArrayList<InfoRest>();
+        var categoriaBuscada = this.categoriaRepository.findById(id);
+        if(categoriaBuscada.isPresent()){
+            categoriaBuscada.get().setNombre(categoria.getNombre());
+            categoriaBuscada.get().setDescripcion(categoria.getDescripcion());
+            data.add(this.categoriaRepository.save(categoriaBuscada.get()));
+        }else{
+            infoList.add(new InfoRest(1,"Categoria no encontrada",1));
+        }
+        categoriaResponse.setData(data);
+        categoriaResponse.setInfoList(infoList);
+        return categoriaResponse;  }
+
+    @Override
+    public CategoriaResponse eliminar(Long id) {
+        var categoriaResponse= new CategoriaResponse();        
+        var data = new ArrayList<Categoria>();
+        var infoList = new ArrayList<InfoRest>();
+        var categoriaBuscada = this.categoriaRepository.findById(id);
+        if(categoriaBuscada.isPresent()){
+            this.categoriaRepository.deleteById(id);
+        }else{
+            infoList.add(new InfoRest(1,"Categoria no encontrada",1));
+        }
+        categoriaResponse.setData(data);
+        categoriaResponse.setInfoList(infoList);
+        return categoriaResponse;  
+    }
     
 }
