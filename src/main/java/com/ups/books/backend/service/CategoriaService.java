@@ -5,6 +5,7 @@
 package com.ups.books.backend.service;
 
 import com.ups.books.backend.controller.response.CategoriaResponse;
+import com.ups.books.backend.model.Categoria;
 
 /**
  *
@@ -13,5 +14,7 @@ import com.ups.books.backend.controller.response.CategoriaResponse;
 public interface CategoriaService {
     
     public CategoriaResponse consultar();
+    public CategoriaResponse crear(Categoria categoria);
+    
     
 }
