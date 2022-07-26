@@ -34,19 +34,9 @@ public class CategoriaServiceImpl implements CategoriaService{
         categoriaResponse.setInfoList(infoList);
         return categoriaResponse;
     }
-
+    
     @Override
-    public CategoriaResponse crear(Categoria categoria) {
-        var categoriaResponse= new CategoriaResponse(); 
-        var data = new ArrayList<Categoria>();
-        var infoList = new ArrayList<InfoRest>();
-        data.add(this.categoriaRepository.save(categoria));
-        categoriaResponse.setData(data);
-        categoriaResponse.setInfoList(infoList);
-        return categoriaResponse;
-    }
-
-    @Override
+    @Transactional(readOnly = true)
     public CategoriaResponse buscarPorId(Long id) {
         var categoriaResponse= new CategoriaResponse();        
         var data = new ArrayList<Categoria>();
@@ -63,6 +53,19 @@ public class CategoriaServiceImpl implements CategoriaService{
     }
 
     @Override
+    @Transactional
+    public CategoriaResponse crear(Categoria categoria) {
+        var categoriaResponse= new CategoriaResponse(); 
+        var data = new ArrayList<Categoria>();
+        var infoList = new ArrayList<InfoRest>();
+        data.add(this.categoriaRepository.save(categoria));
+        categoriaResponse.setData(data);
+        categoriaResponse.setInfoList(infoList);
+        return categoriaResponse;
+    }
+
+    @Override
+    @Transactional
     public CategoriaResponse modificar(Categoria categoria, Long id) {
         var categoriaResponse= new CategoriaResponse();        
         var data = new ArrayList<Categoria>();
@@ -77,9 +80,11 @@ public class CategoriaServiceImpl implements CategoriaService{
         }
         categoriaResponse.setData(data);
         categoriaResponse.setInfoList(infoList);
-        return categoriaResponse;  }
+        return categoriaResponse;  
+    }
 
     @Override
+    @Transactional
     public CategoriaResponse eliminar(Long id) {
         var categoriaResponse= new CategoriaResponse();        
         var data = new ArrayList<Categoria>();

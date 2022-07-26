@@ -4,13 +4,13 @@
  */
 package com.ups.books.backend.controller.response;
 
-import com.ups.books.backend.model.Categoria;
+import com.ups.books.backend.model.Libro;
 
 /**
  *
  * @author UPS
  */
-public class CategoriaResponse extends ResponseRest<Categoria>{
+public class LibroResponse extends ResponseRest<Libro>{
 
 
 }

@@ -5,12 +5,12 @@
 package com.ups.books.backend.model.repository;
 
 import com.ups.books.backend.model.Libro;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author UPS
  */
-public interface LibroRepository extends CrudRepository<Libro, Long>{
+public interface LibroRepository extends JpaRepository<Libro, Long>{
     
 }
