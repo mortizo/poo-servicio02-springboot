@@ -35,7 +35,7 @@ public class Usuario implements Serializable {
     private Long id;
 
     @Column(unique = true, length = 20)
-    private String nombreUsuario;
+    private String nombre;
 
     @Column(length = 65)
     private String password;
@@ -58,12 +58,12 @@ public class Usuario implements Serializable {
         this.id = id;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setNombre(String nombreUsuario) {
+        this.nombre = nombreUsuario;
     }
 
     public String getPassword() {
