@@ -11,12 +11,14 @@ import com.ups.books.backend.model.repository.LibroRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author morti
  */
+@Service
 public class LibroServiceImpl implements LibroService{
 
     @Autowired
@@ -72,6 +74,7 @@ public class LibroServiceImpl implements LibroService{
         if(libroBuscado.isPresent()){
             libroBuscado.get().setNombre(libro.getNombre());
             libroBuscado.get().setDescripcion(libro.getDescripcion());
+            libroBuscado.get().setCategoria(libro.getCategoria());
             data.add(this.libroRepository.save(libroBuscado.get()));
         }else{
             infoList.add(new InfoRest(1,"Categoria no encontrada",1));
