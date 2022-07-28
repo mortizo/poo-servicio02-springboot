@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +36,7 @@ public class CategoriaResponseController {
 	
 	@GetMapping("/categorias")
 	public ResponseEntity<CategoriaResponse> consulta(){
-            log.info("Inicio del método consulta()");            
+            log.info("Inicio del método consulta()");   
             try{
                 var categoriaResponse=this.categoriaService.consultar();                
                 categoriaResponse.getInfoList().add(new InfoRest(1,"Respuesta Ok",1));
@@ -100,7 +101,9 @@ public class CategoriaResponseController {
 	
 	@DeleteMapping("/categorias/{id}")
 	public ResponseEntity<CategoriaResponse> eliminar(@PathVariable Long id){
-            log.info("Inicio del método eliminar()");            
+            log.info("Inicio del método eliminar()");   
+            var auth = SecurityContextHolder.getContext().getAuthentication();
+            log.info("Usuario: ",auth.getPrincipal(),auth.getAuthorities());
             try{
                 var categoriaResponse=this.categoriaService.eliminar(id);
                 categoriaResponse.getInfoList().add(new InfoRest(1,"Respuesta Ok",1));
