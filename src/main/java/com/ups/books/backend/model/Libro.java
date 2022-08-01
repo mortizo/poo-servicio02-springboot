@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.ups.books.backend.model;
+
 import java.io.Serializable;
 
 import javax.persistence.Entity;
@@ -15,50 +16,65 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
 @Entity
-@Table(name="libro")
-public class Libro implements Serializable{
-	
-	/*
+@Table(name = "libro")
+public class Libro implements Serializable {
+
+    /*
 	 * Mauricio Ortiz
 	 * UPS
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String nombre;
-	private String descripcion;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private Categoria categoria;
-	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public String getDescripcion() {
-		return descripcion;
-	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-	public Categoria getCategoria() {
-		return categoria;
-	}
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
+     */
+    private static final long serialVersionUID = 1L;
 
-	
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nombre;
+    private String descripcion;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Categoria categoria;
+
+    public Libro() {
+    }
+
+    public Libro(Long id, String nombre, String descripcion, Categoria categoria) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
 }

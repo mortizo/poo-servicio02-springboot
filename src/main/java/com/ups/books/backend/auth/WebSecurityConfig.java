@@ -5,6 +5,7 @@
 package com.ups.books.backend.auth;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import static org.springframework.security.config.Customizer.withDefaults;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,6 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  *
  * @author UPS
  * https://www.youtube.com/watch?v=ckNz6ITf16E&ab_channel=JuanCabello%7CiTana
+ * https://stackoverflow.com/questions/50486314/how-to-solve-403-error-in-spring-boot-post-request
  */
 @Configuration
 @EnableWebSecurity
@@ -35,6 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManager();
     }
      */
+    
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -47,6 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .cors().and().csrf().disable()
                 .httpBasic(withDefaults())
                 .authorizeRequests()
                 .antMatchers("/v1/libros/**").permitAll()
@@ -54,5 +58,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
                 
     }
-
+    
 }

@@ -50,22 +50,6 @@ public class CategoriaResponseController {
             }
 	}
         
-        @PostMapping("/categorias")
-	public ResponseEntity<CategoriaResponse> crear(@RequestBody Categoria categoria){
-            log.info("Inicio del método crear(Categoria categoria)");            
-            try{
-                var categoriaResponse=this.categoriaService.crear(categoria);
-                categoriaResponse.getInfoList().add(new InfoRest(1,"Respuesta Ok",1));
-                return new ResponseEntity<>(categoriaResponse, HttpStatus.CREATED);
-            }catch(Exception e1){                
-                var categoriaResponse = new CategoriaResponse();            
-                var infoList = new ArrayList<InfoRest>();
-                infoList.add(new InfoRest(2,e1.getMessage(),0));
-                categoriaResponse.setInfoList(infoList);                
-                return new ResponseEntity<>(categoriaResponse, HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-        
         @GetMapping("/categorias/{id}")
 	public ResponseEntity<CategoriaResponse> consultaPorId(@PathVariable Long id){
             log.info("Inicio del método consultaPorId()");            
@@ -81,7 +65,26 @@ public class CategoriaResponseController {
                 return new ResponseEntity<>(categoriaResponse, HttpStatus.INTERNAL_SERVER_ERROR);
             }
 	}
-	
+        
+   
+        
+        
+        
+        @PostMapping("/categorias")
+	public ResponseEntity<CategoriaResponse> crear(@RequestBody Categoria categoria){
+            log.info("Inicio del método crear(Categoria categoria)");            
+            try{
+                var categoriaResponse=this.categoriaService.crear(categoria);
+                categoriaResponse.getInfoList().add(new InfoRest(1,"Respuesta Ok",1));
+                return new ResponseEntity<>(categoriaResponse, HttpStatus.CREATED);
+            }catch(Exception e1){                
+                var categoriaResponse = new CategoriaResponse();            
+                var infoList = new ArrayList<InfoRest>();
+                infoList.add(new InfoRest(2,e1.getMessage(),0));
+                categoriaResponse.setInfoList(infoList);                
+                return new ResponseEntity<>(categoriaResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
 	
 	@PutMapping("/categorias/{id}")
 	public ResponseEntity<CategoriaResponse> actualizar(@RequestBody Categoria categoria, @PathVariable Long id){

@@ -54,22 +54,6 @@ public class LibroResponseController {
             }
 	}
         
-        @PostMapping("/libros")
-	public ResponseEntity<LibroResponse> crear(@RequestBody Libro categoria){
-            log.info("Inicio del método crear(Categoria categoria)");            
-            try{
-                var categoriaResponse=this.libroService.crear(categoria);
-                categoriaResponse.getInfoList().add(new InfoRest(1,"Respuesta Ok",1));
-                return new ResponseEntity<>(categoriaResponse, HttpStatus.CREATED);
-            }catch(Exception e1){                
-                var categoriaResponse = new LibroResponse();            
-                var infoList = new ArrayList<InfoRest>();
-                infoList.add(new InfoRest(2,e1.getMessage(),0));
-                categoriaResponse.setInfoList(infoList);                
-                return new ResponseEntity<>(categoriaResponse, HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-        
         @GetMapping("/libros/{id}")
 	public ResponseEntity<LibroResponse> consultaPorId(@PathVariable Long id){
             log.info("Inicio del método consultaPorId()");            
@@ -85,6 +69,23 @@ public class LibroResponseController {
                 return new ResponseEntity<>(categoriaResponse, HttpStatus.INTERNAL_SERVER_ERROR);
             }
 	}
+        
+        @PostMapping("/libros")
+	public ResponseEntity<LibroResponse> crear(@RequestBody Libro categoria){
+            log.info("Inicio del método crear(Categoria categoria)");            
+            try{
+                var categoriaResponse=this.libroService.crear(categoria);
+                categoriaResponse.getInfoList().add(new InfoRest(1,"Respuesta Ok",1));
+                return new ResponseEntity<>(categoriaResponse, HttpStatus.CREATED);
+            }catch(Exception e1){                
+                var categoriaResponse = new LibroResponse();            
+                var infoList = new ArrayList<InfoRest>();
+                infoList.add(new InfoRest(2,e1.getMessage(),0));
+                categoriaResponse.setInfoList(infoList);                
+                return new ResponseEntity<>(categoriaResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
 	
 	
 	@PutMapping("/libros/{id}")
