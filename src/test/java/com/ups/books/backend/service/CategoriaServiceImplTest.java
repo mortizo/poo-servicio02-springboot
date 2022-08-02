@@ -46,7 +46,7 @@ public class CategoriaServiceImplTest {
         
         assertEquals(5,response.getData().size());
         verify(this.categoriaRepository,times(1)).findAll();
-    }
+    }  
     
     public void cargarCategorias(){
         categoriaList.add(new Categoria(Long.valueOf("100"), 
