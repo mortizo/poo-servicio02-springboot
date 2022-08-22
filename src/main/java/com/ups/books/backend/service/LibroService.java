@@ -12,11 +12,15 @@ import com.ups.books.backend.model.Libro;
  * @author morti
  */
 public interface LibroService {
-    
+
     public LibroResponse consultar();
+
     public LibroResponse buscarPorId(Long id);
+
     public LibroResponse crear(Libro libro);
+
     public LibroResponse modificar(Libro libro, Long id);
+
     public LibroResponse eliminar(Long id);
-    
+
 }

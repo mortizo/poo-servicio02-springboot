@@ -6,7 +6,7 @@ package com.ups.books.backend.controller.response;
 
 /**
  *
- * @author UPS
+ * @author morti
  */
 public class InfoRest {
 
@@ -19,7 +19,7 @@ public class InfoRest {
         this.mensaje = mensaje;
         this.tipoInfo = tipoInfo;
     }
-    
+
     public int getCodigo() {
         return codigo;
     }
@@ -43,9 +43,5 @@ public class InfoRest {
     public void setTipoInfo(int tipoInfo) {
         this.tipoInfo = tipoInfo;
     }
-
-    
-   
-  
 
 }
