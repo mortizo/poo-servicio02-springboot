@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "libro")
@@ -76,5 +77,5 @@ public class Libro implements Serializable {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-
+    
 }

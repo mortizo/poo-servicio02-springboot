@@ -61,7 +61,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic(withDefaults())
                 .authorizeRequests()
                 .antMatchers("/v1/libros/**").permitAll()
-                .antMatchers("/v1/categorias/**").permitAll();
+                .antMatchers("/v1/categorias/**").permitAll()
+                .antMatchers("/**").permitAll();
+        
                 
     }
     

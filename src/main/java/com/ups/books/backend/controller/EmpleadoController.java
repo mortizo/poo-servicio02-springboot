@@ -23,7 +23,7 @@ public class EmpleadoController {
     
     @RequestMapping("/")
     public String index(Model model){
-        model.addAttribute("empleadolist",this.empleadoService.consultar());
+        model.addAttribute("empleadoList",this.empleadoService.consultar());
         return "index";
     }
     
