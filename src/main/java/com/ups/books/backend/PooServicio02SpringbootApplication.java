@@ -23,10 +23,21 @@ public class PooServicio02SpringbootApplication //implements CommandLineRunner
         }
     }
 */
+   // public static void main(String[] args) {
+     //   SpringApplication.run(PooServicio02SpringbootApplication.class, args);
+   // }
+
     public static void main(String[] args) {
-        SpringApplication.run(PooServicio02SpringbootApplication.class, args);
+        System.out.println("Hola Mundo");
+        //calcular el factorial de un numero
+        int numero = 10;
+
+        int factorial = 1;
+        for (int i = 1; i <= numero; i++) {
+            factorial = factorial * i;
+        }
+        System.out.println("El factorial de " + numero + " es: " + factorial);
+
     }
-
-
 
 }
